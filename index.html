@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    button{
+      margin:20px;
+    }
+
+    #container {
+      width: 500px;
+      aspect-ratio: 1/1;
+      background-color: pink;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .grid {
+      box-sizing: border-box;
+      background-color: gray;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <button>
+    grid
+  </button>
+  <div id='container'></div>
+  <button id="delete">delete</button>
+
+</body>
+<script>
+
+
+
+  const container = document.getElementById("container");
+  const btn = document.querySelector('button');
+  btn.addEventListener('click', gridMaker);
+  function gridMaker(e) {
+    const n = prompt();
+    for (let i = 0; i < n * n; i++) {
+      const div = document.createElement('div');
+      div.style.width = `${500 / n}px`;
+      div.classList.add("grid");
+      container.appendChild(div);
+
+    }
+
+  }
+  container.addEventListener
+    ('click', (event) => event.target.style.backgroundColor = "yellow");
+  const btn2 = document.getElementById("delete");
+  function gridRemove(e) {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+  }
+  btn2.addEventListener('click', gridRemove);
+</script>
+
+</html>
