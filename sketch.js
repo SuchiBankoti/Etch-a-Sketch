@@ -24,10 +24,6 @@
         }
         let gridColor = rrggbb();
         e.target.style.backgroundColor = `${gridColor}`;
-  
-  
-  
-  
         container.addEventListener('mouseout', function colorZero(e) {
           e.target.style.backgroundColor = "rgb(245,245,245)";
         })
