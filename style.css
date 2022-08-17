@@ -1,0 +1,26 @@
+    body {
+      width:100%;
+      display: flex;
+      flex-direction: column;
+    } 
+
+   button{
+     margin:auto;
+     margin-top: 20px;
+     margin-bottom: 30px;
+   }
+
+    #container {
+      margin:auto;
+      width: 800px;
+      height:800px;
+      display: grid;
+      grid-template-columns: repeat(16,50px );
+      grid-template-rows: repeat(16, 50px);
+        border:1px solid black;
+    }
+    
+  .grid{
+    border:1px solid black}
+   
+     
