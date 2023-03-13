@@ -4,18 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="mainContent">
-      <div id="colorSelection"></div>
-      <div id="gridContainer"></div>
-    </div>
-    <div id="btnContainer">
-      <button id="gridButton">New Grid</button>
-    </div>
 
+  <body>
+    <div class="main-page">
+      <div class="left">
+        <div id="newunit"></div>
+        <div id="refreshColor">Colors</div>
+        <div class="grid-numbers">
+          <div class="newGrid">10X10</div>
+          <div class="newGrid">20X20</div>
+          <div class="newGrid">30X30</div>
+        </div>
+        <div id="clear">Clear</div>
+      </div>
+      <div class="right">
+        <h1>Etch-a-Sketch</h1>
+        <p class="description">
+          Choose the grid and the color, then hover the mouse to paint. To clear
+          the grid - just push the same or another grid button.
+        </p>
+        <div id="gridContainer"></div>
+      </div>
+    </div>
     <script src="sketch.js"></script>
   </body>
 </html>

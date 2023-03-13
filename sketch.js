@@ -1,63 +1,61 @@
 const grid_container = document.getElementById("gridContainer");
-const btn_container = document.getElementById("btnContainer");
-const color_selector = document.getElementById("colorSelection");
-const grid_btn = document.getElementById("gridButton");
-const save_btn = document.createElement("button");
+const new_grid = document.getElementsByClassName("newGrid");
+const clear = document.getElementById("clear");
+const select_colors = document.getElementById("refreshColor");
+let grid_color = "black";
+Array.from(new_grid).forEach((element, i) => {
+  let a = i * 10 + 10;
+  element.addEventListener("click", () => gridMaker(a));
+});
+clear.addEventListener("click", removeGrid);
+select_colors.addEventListener("click", addColors);
 
-let color = "";
-grid_btn.addEventListener("click", loadGrid);
-colorSelect();
-
-function loadGrid() {
-  gridMaker();
-  addSaveBtn();
-}
-function addSaveBtn() {
-  save_btn.textContent = "Save Grid";
-  btn_container.appendChild(save_btn);
-  save_btn.addEventListener("click", removeGrid);
-}
-function gridMaker() {
-  const n = prompt();
+function gridMaker(n) {
+  removeGrid();
   for (let i = 0; i < n * n; i++) {
     const unit = document.createElement("div");
     unit.style.width = `${500 / n}px`;
     unit.classList.add("grid");
     unit.addEventListener("click", addColorToGrid);
+    unit.addEventListener("dblclick", eraseColor);
     grid_container.appendChild(unit);
   }
 }
 function removeGrid() {
-  alert("your sketch is saved");
-  const btn_container = document.getElementById("btnContainer");
-  btn_container.removeChild(save_btn);
   while (grid_container.lastChild) {
     grid_container.removeChild(grid_container.lastChild);
   }
 }
-
-function randomColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
-}
 function addColorToGrid(e) {
-  e.target.style.backgroundColor = color;
+  e.target.style.backgroundColor = grid_color;
 }
-
-function colorSelect() {
-  const label = document.createElement("label");
-  label.textContent = "Select your color : ";
-  const select = document.createElement("select");
-  select.addEventListener("change", (e) => {
-    color = e.target.value;
-  });
-  for (let i = 0; i < 20; i++) {
-    let color = randomColor();
-    const option = document.createElement("option");
-    option.style.backgroundColor = color;
-    option.textContent = color;
-    option.value = color;
-    select.appendChild(option);
+function eraseColor(e) {
+  e.target.style.backgroundColor = "transparent";
+}
+function getRandomColor() {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
   }
-  label.appendChild(select);
-  color_selector.appendChild(label);
+  return color;
+}
+function addColors() {
+  const newUnit = document.getElementById("newunit");
+  while (newUnit.lastChild) {
+    newUnit.removeChild(newUnit.lastChild);
+  }
+  for (let i = 0; i < 6; i++) {
+    let c = getRandomColor();
+    const unit = document.createElement("div");
+    unit.style.backgroundColor = c;
+    unit.classList.add("color-unit");
+    unit.addEventListener("click", () => {
+      grid_color = c;
+      while (newUnit.lastChild) {
+        newUnit.removeChild(newUnit.lastChild);
+      }
+    });
+    newUnit.appendChild(unit);
+  }
 }
