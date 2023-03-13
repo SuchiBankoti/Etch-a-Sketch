@@ -96,3 +96,14 @@ body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+#clear,
+#refreshColor {
+  background-color: black;
+  border-radius: 5px;
+  height: 10%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
